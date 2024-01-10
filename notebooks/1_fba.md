@@ -71,7 +71,7 @@ model_yeast
         <td>iMM904</td>
     </tr><tr>
         <td><strong>Memory address</strong></td>
-        <td>0x07fbaaa7c5670</td>
+        <td>0x07fad1b46a1f0</td>
     </tr><tr>
         <td><strong>Number of metabolites</strong></td>
         <td>1226</td>
@@ -110,7 +110,7 @@ model_yeast.reactions[2]
         <td><strong>Name</strong></td><td>Exo 1 3 beta glucan glucohydrase</td>
     </tr><tr>
         <td><strong>Memory address</strong></td>
-        <td>0x07fba992dc850</td>
+        <td>0x07fad4ac12400</td>
     </tr><tr>
         <td><strong>Stoichiometry</strong></td>
         <td>
@@ -188,7 +188,7 @@ pgi
         <td><strong>Name</strong></td><td>Glucose-6-phosphate isomerase</td>
     </tr><tr>
         <td><strong>Memory address</strong></td>
-        <td>0x07fba79f02be0</td>
+        <td>0x07fad4b4d2b20</td>
     </tr><tr>
         <td><strong>Stoichiometry</strong></td>
         <td>
@@ -368,14 +368,14 @@ atp
         <td><strong>Name</strong></td><td>ATP C10H12N5O13P3</td>
     </tr><tr>
         <td><strong>Memory address</strong></td>
-        <td>0x07fba79ac2f10</td>
+        <td>0x07fad48771a90</td>
     </tr><tr>
         <td><strong>Formula</strong></td><td>C10H12N5O13P3</td>
     </tr><tr>
         <td><strong>Compartment</strong></td><td>c</td>
     </tr><tr>
         <td><strong>In 149 reaction(s)</strong></td><td>
-            CYSTRS, NADK, GLUCYS, GK1, UMPK, NMNAT, FACOAL181, ATPPRT, FACOAL160, URIK1, ADNK1, ATPtm_H, INSK, PRAIS, PIN3K_SC, DHFS, DHAK, HETZK, GLUK, PMPK, ACCOAC, HISTRS, NDPK1, TMDPPK, PHETRS, PRAGSr,...</td>
+            SERTRS, DGK1, DURIK1, FACOAL182, ACCOAC, SADT, THFGLUS, PTPATi, GLUTRS, NDPK3, GLNS, NDPK6, PROTRS, NDPK2, PIN4K_SC, SHKK, CYTK2, UMPK, DRBK, ASNS1, NDPK5, RNMK, LEUTRS, NADS1, PC, NMNAT, DPCOAK,...</td>
     </tr>
 </table>
 
@@ -457,12 +457,12 @@ pgi_gene
         <td><strong>Name</strong></td><td>PGI1</td>
     </tr><tr>
         <td><strong>Memory address</strong></td>
-        <td>0x07fba99229c10</td>
+        <td>0x07fad4ab617c0</td>
     </tr><tr>
         <td><strong>Functional</strong></td><td>True</td>
     </tr><tr>
         <td><strong>In 3 reaction(s)</strong></td><td>
-            G6PI3, G6PI, PGI</td>
+            G6PI, PGI, G6PI3</td>
     </tr>
 </table>
 
@@ -595,7 +595,7 @@ for gene in model_yeast.genes:
     YCR034W, new growth rate -0.000000
 
 
-Let's see the distribution of our results creating a plot with the vectors obtained above:
+Let's see the distribution of our results creating a histogram plot with the vectors obtained above:
 
 
 ```python
@@ -608,7 +608,6 @@ y = np.array(grow_rates)
 plt.hist(y)
 plt.xlabel('Growth rates')
 plt.ylabel('Number of genes')
-#plt.show()
 plt.savefig("distribution.png", dpi=100, bbox_inches='tight',pad_inches=0)
 ```
 
@@ -618,27 +617,109 @@ plt.savefig("distribution.png", dpi=100, bbox_inches='tight',pad_inches=0)
     
 
 
+Let's try a different visualization, this time we will create a big scatter plot showing the growth rate of each gene-knockout.
+
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array(genes_ids)
+y = np.array(grow_rates)
+
+fig = plt.figure(figsize=(340, 10))
+plt.scatter(x, y)
+plt.margins(x=0.001) 
+plt.xticks(rotation=90)
+plt.savefig("scatter.png", dpi=100, bbox_inches='tight',pad_inches=0)
+```
+
+
+    
+![png](output_60_0.png)
+    
+
+
+Since the generate plot is very wide, it will appear as a blank box. Double click on it to expand it, then you can scroll to the right to inspect gene-knockout-induced changes in growth rate.
+
 ### Questions
 
-1. Why does the distribution of predicted growth rates appear to be bimodal? 
+1. The distribution of predicted growth rates appears to be bimodal, with a small peak on the left and a larger peak on the right, can you explain why it has this shape? 
 2. Can you verify the consistency between gene and reactions knockouts results using a gene or a reaction of your choice?
 3. Can you verify the essentiality of your gene of choice from the previous excercise using relevant databases (e.g. KEGG and the SGD)?
 4. Do you expect these results to change if we change the medium where we are growing our yeast model? 
 
-### Solution to question 2
+### Solutions 
+#### Question 1
+
+The smaller peak on the left-hand side represents lethal genes, while the larger peak on the right-hand side represents not essential genes. There are also a few genes in between, suggesting that they have small but noticeable effects the growth rate.
+
+#### Question 2
 
 
 ```python
-#type your code here, results in the html
+# Import the model again to reverse the previous edits
+model_yeast=cobra.io.read_sbml_model("iMM904.xml.gz")
+
+# From the results of the simulations above, we can see that YJL167W is an essential gene
+# Let's check with genes.get_by_id and identify the reactions catalysed by this enzyme
+model_yeast.genes.get_by_id("YJL167W")
 ```
+
+
+
+
+
+<table>
+    <tr>
+        <td><strong>Gene identifier</strong></td><td>YJL167W</td>
+    </tr><tr>
+        <td><strong>Name</strong></td><td>ERG20</td>
+    </tr><tr>
+        <td><strong>Memory address</strong></td>
+        <td>0x07fad4e809fa0</td>
+    </tr><tr>
+        <td><strong>Functional</strong></td><td>True</td>
+    </tr><tr>
+        <td><strong>In 2 reaction(s)</strong></td><td>
+            GRTT, DMATT</td>
+    </tr>
+</table>
+
+
 
 
 ```python
-#type your code here, results in the html
+# When we selectively knockout the reaction GRTT we get no growth
+with model_yeast as model_yeast:
+    grtt = model_yeast.reactions.get_by_id("GRTT")
+    grtt.knock_out()
+    model_yeast.optimize()
+    print('%s blocked (bounds: %s), new growth rate %f' %
+            (grtt.id, str(grtt.bounds), model_yeast.objective.value))
+    
+# When we selectively knockout the reaction DMATT, we get no growth
+with model_yeast as model_yeast:
+    dmatt = model_yeast.reactions.get_by_id("DMATT")
+    dmatt.knock_out()
+    model_yeast.optimize()
+    print('%s blocked (bounds: %s), new growth rate %f' %
+            (dmatt.id, str(dmatt.bounds), model_yeast.objective.value))
+    
+# Final manual check that knocking out this gene results in no growth
+gene=model_yeast.genes.get_by_id("YJL167W")
+gene.knock_out()
+model_yeast.optimize()
+print("YJL167W gene knocked out with new growth rate: ",model_yeast.objective.value)
 ```
 
-### Solution to question 3
-When we look for YJL167W in the Saccharomyces genome database --> <a href="https://www.yeastgenome.org/locus/S000003703"> HERE </a>, we find out that YJL167W is an essential gene
+    GRTT blocked (bounds: (0, 0)), new growth rate 0.000000
+    DMATT blocked (bounds: (0, 0)), new growth rate 0.000000
+    YJL167W gene knocked out with new growth rate:  0.0
 
-### Solution to question 4
+
+#### Question 3
+Searching for YJL167W in the [Saccharomyces Genome Database](https://www.yeastgenome.org/locus/S000003703) reveals that YJL167W is indeed an essential gene.
+
+#### Question 4
 Yes, we will look into this phenomenon in the next notebook.

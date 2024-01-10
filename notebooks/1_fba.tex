@@ -485,7 +485,7 @@ table.
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{4}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-<Model iMM904 at 0x7fbaaa7c5670>
+<Model iMM904 at 0x7fad1b46a1f0>
 \end{Verbatim}
 \end{tcolorbox}
         
@@ -503,7 +503,7 @@ retrieved by index. For example, to get the 3rd reaction in the model
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{5}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-<Reaction 13BGHe at 0x7fba992dc850>
+<Reaction 13BGHe at 0x7fad4ac12400>
 \end{Verbatim}
 \end{tcolorbox}
         
@@ -570,7 +570,7 @@ reconstruction, you can run the code below:
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{7}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-<Reaction PGI at 0x7fba79f02be0>
+<Reaction PGI at 0x7fad4b4d2b20>
 \end{Verbatim}
 \end{tcolorbox}
         
@@ -760,7 +760,7 @@ choice:
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{16}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-<Metabolite atp\_c at 0x7fba79ac2f10>
+<Metabolite atp\_c at 0x7fad48771a90>
 \end{Verbatim}
 \end{tcolorbox}
         
@@ -846,7 +846,7 @@ reactions itself, as well as by the model
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{21}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-<Gene YBR196C at 0x7fba99229c10>
+<Gene YBR196C at 0x7fad4ab617c0>
 \end{Verbatim}
 \end{tcolorbox}
         
@@ -999,8 +999,8 @@ YBR145W, new growth rate 0.287866
 YCR034W, new growth rate -0.000000
     \end{Verbatim}
 
-    Let's see the distribution of our results creating a plot with the
-vectors obtained above:
+    Let's see the distribution of our results creating a histogram plot with
+the vectors obtained above:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{25}{\boxspacing}
@@ -1014,7 +1014,6 @@ vectors obtained above:
 \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Growth rates}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of genes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\PY{c+c1}{\PYZsh{}plt.show()}
 \PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{distribution.png}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{bbox\PYZus{}inches}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{pad\PYZus{}inches}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
@@ -1024,6 +1023,35 @@ vectors obtained above:
     \end{center}
     { \hspace*{\fill} \\}
     
+    Let's try a different visualization, this time we will create a big
+scatter plot showing the growth rate of each gene-knockout.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{26}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+
+\PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{genes\PYZus{}ids}\PY{p}{)}
+\PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{grow\PYZus{}rates}\PY{p}{)}
+
+\PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{340}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{margins}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{l+m+mf}{0.001}\PY{p}{)} 
+\PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{rotation}\PY{o}{=}\PY{l+m+mi}{90}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scatter.png}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{bbox\PYZus{}inches}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{pad\PYZus{}inches}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_60_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Since the generate plot is very wide, it will appear as a blank box.
+Double click on it to expand it, then you can scroll to the right to
+inspect gene-knockout-induced changes in growth rate.
+
     \hypertarget{questions}{%
 \subsubsection{Questions}\label{questions}}
 
@@ -1031,8 +1059,9 @@ vectors obtained above:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Why does the distribution of predicted growth rates appear to be
-  bimodal?
+  The distribution of predicted growth rates appears to be bimodal, with
+  a small peak on the left and a larger peak on the right, can you
+  explain why it has this shape?
 \item
   Can you verify the consistency between gene and reactions knockouts
   results using a gene or a reaction of your choice?
@@ -1044,31 +1073,81 @@ vectors obtained above:
   are growing our yeast model?
 \end{enumerate}
 
-    \hypertarget{solution-to-question-2}{%
-\subsubsection{Solution to question 2}\label{solution-to-question-2}}
+    \hypertarget{solutions}{%
+\subsubsection{Solutions}\label{solutions}}
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{26}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{}type your code here, results in the html}
-\end{Verbatim}
-\end{tcolorbox}
+\hypertarget{question-1}{%
+\paragraph{Question 1}\label{question-1}}
+
+The smaller peak on the left-hand side represents lethal genes, while
+the larger peak on the right-hand side represents not essential genes.
+There are also a few genes in between, suggesting that they have small
+but noticeable effects the growth rate.
+
+\hypertarget{question-2}{%
+\paragraph{Question 2}\label{question-2}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{27}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{}type your code here, results in the html}
+\PY{c+c1}{\PYZsh{} Import the model again to reverse the previous edits}
+\PY{n}{model\PYZus{}yeast}\PY{o}{=}\PY{n}{cobra}\PY{o}{.}\PY{n}{io}\PY{o}{.}\PY{n}{read\PYZus{}sbml\PYZus{}model}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{iMM904.xml.gz}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} From the results of the simulations above, we can see that YJL167W is an essential gene}
+\PY{c+c1}{\PYZsh{} Let\PYZsq{}s check with genes.get\PYZus{}by\PYZus{}id and identify the reactions catalysed by this enzyme}
+\PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{genes}\PY{o}{.}\PY{n}{get\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{YJL167W}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-    \hypertarget{solution-to-question-3}{%
-\subsubsection{Solution to question 3}\label{solution-to-question-3}}
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{27}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+<Gene YJL167W at 0x7fad4e809fa0>
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{28}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} When we selectively knockout the reaction GRTT we get no growth}
+\PY{k}{with} \PY{n}{model\PYZus{}yeast} \PY{k}{as} \PY{n}{model\PYZus{}yeast}\PY{p}{:}
+    \PY{n}{grtt} \PY{o}{=} \PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{reactions}\PY{o}{.}\PY{n}{get\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GRTT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{grtt}\PY{o}{.}\PY{n}{knock\PYZus{}out}\PY{p}{(}\PY{p}{)}
+    \PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{optimize}\PY{p}{(}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{ blocked (bounds: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{), new growth rate }\PY{l+s+si}{\PYZpc{}f}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZpc{}}
+            \PY{p}{(}\PY{n}{grtt}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{grtt}\PY{o}{.}\PY{n}{bounds}\PY{p}{)}\PY{p}{,} \PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{objective}\PY{o}{.}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+    
+\PY{c+c1}{\PYZsh{} When we selectively knockout the reaction DMATT, we get no growth}
+\PY{k}{with} \PY{n}{model\PYZus{}yeast} \PY{k}{as} \PY{n}{model\PYZus{}yeast}\PY{p}{:}
+    \PY{n}{dmatt} \PY{o}{=} \PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{reactions}\PY{o}{.}\PY{n}{get\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DMATT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{dmatt}\PY{o}{.}\PY{n}{knock\PYZus{}out}\PY{p}{(}\PY{p}{)}
+    \PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{optimize}\PY{p}{(}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{ blocked (bounds: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{), new growth rate }\PY{l+s+si}{\PYZpc{}f}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZpc{}}
+            \PY{p}{(}\PY{n}{dmatt}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{dmatt}\PY{o}{.}\PY{n}{bounds}\PY{p}{)}\PY{p}{,} \PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{objective}\PY{o}{.}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+    
+\PY{c+c1}{\PYZsh{} Final manual check that knocking out this gene results in no growth}
+\PY{n}{gene}\PY{o}{=}\PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{genes}\PY{o}{.}\PY{n}{get\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{YJL167W}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{gene}\PY{o}{.}\PY{n}{knock\PYZus{}out}\PY{p}{(}\PY{p}{)}
+\PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{optimize}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{YJL167W gene knocked out with new growth rate: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{model\PYZus{}yeast}\PY{o}{.}\PY{n}{objective}\PY{o}{.}\PY{n}{value}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
 
-When we look for YJL167W in the Saccharomyces genome database
---\textgreater{} HERE , we find out that YJL167W is an essential gene
+    \begin{Verbatim}[commandchars=\\\{\}]
+GRTT blocked (bounds: (0, 0)), new growth rate 0.000000
+DMATT blocked (bounds: (0, 0)), new growth rate 0.000000
+YJL167W gene knocked out with new growth rate:  0.0
+    \end{Verbatim}
 
-    \hypertarget{solution-to-question-4}{%
-\subsubsection{Solution to question 4}\label{solution-to-question-4}}
+    \hypertarget{question-3}{%
+\paragraph{Question 3}\label{question-3}}
+
+Searching for YJL167W in the
+\href{https://www.yeastgenome.org/locus/S000003703}{Saccharomyces Genome
+Database} reveals that YJL167W is indeed an essential gene.
+
+    \hypertarget{question-4}{%
+\paragraph{Question 4}\label{question-4}}
 
 Yes, we will look into this phenomenon in the next notebook.
 
