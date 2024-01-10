@@ -18,11 +18,11 @@ This repo hosts training materials for the University of Cambridge [Part III Sys
 #### [Exercise 2](https://github.com/franciscozorrilla/systems-biology-fba-practical/blob/main/notebooks/2_fba.md)
 - **2.1**: Modify growth medium of your reconstruction
 - **2.2**: Perform gene essentiality analysis under different conditions
-- **2.3**: Case study, simulate the Carbtree effect in yeast
+- **2.3**: Case study, simulate the Crabtree effect in yeast
 
 ## 🛠️ Usage
 
-You will find everything you need for these practical exercises under the `/notebooks` folder. Each tutorial is uploaded as `.html`, `.md`, `.tex`, and `.ipynb` files. Therefore, ss you edit the python notebooks, you will still have the original text and results available in the html, markdown, and latex files. 
+You will find everything you need for these practical exercises under the `/notebooks` folder. Each tutorial is uploaded as `.html`, `.md`, `.tex`, and `.ipynb` files. As you carry out the exercises using the the python notebooks, you will find the original text and results in the html, markdown, and latex files. 
 
 ### Running locally
 
