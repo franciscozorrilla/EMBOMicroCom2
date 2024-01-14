@@ -4,7 +4,7 @@
 
 ## 📜 About
 
-This repo hosts training materials for the University of Cambridge [Part III Systems Biology course](https://www.sysbiol.cam.ac.uk/Part%20III). More specifically, these are practical exercises for the computational session on flux balance analysis (FBA) using genome-scale metabolic models (GEMs). Most of the exercises are based on the [cobrapy documentation](https://cobrapy.readthedocs.io/en/latest/).
+This repo hosts training materials for the University of Cambridge [Part III Systems Biology course](https://www.sysbiol.cam.ac.uk/Part%20III). More specifically, these are practical exercises for the computational session on flux balance analysis (FBA) using genome-scale metabolic models (GEMs). Exercise 1 is based on selected portions of the [cobrapy documentation](https://cobrapy.readthedocs.io/en/latest/).
 
 ### Learning outcomes
 
@@ -19,6 +19,29 @@ This repo hosts training materials for the University of Cambridge [Part III Sys
 - **2.1**: Modify growth medium of your reconstruction
 - **2.2**: Perform gene essentiality analysis under different conditions
 - **2.3**: Case study, simulate the Crabtree effect in yeast
+
+## 🚚 Software requirements
+
+The following packages will already be installed on the provided machines:
+
+* [cobrapy](https://opencobra.github.io/cobrapy/)
+* [matplotlib](https://matplotlib.org/stable/)
+* [numpy](https://numpy.org/install/)
+* [notebook](https://jupyter.org/install#jupyter-notebook)
+
+To install on your own computers use the [pip package manager](https://pip.pypa.io/en/stable/getting-started/).
+
+Using the `requirements.txt` files:
+
+```
+$ pip install -r requirements.txt
+```
+
+Or from scratch:
+
+```
+$ pip install cobra matplotlib numpy notebook
+```
 
 ## 🛠️ Usage
 
@@ -60,7 +83,7 @@ Alternatively launch an interactive binder session by clicking below:
 
 ## 👷 Contributors
 
-* Originally developed by Arianna Basile and Kiran Patil in 2022
+* Originally developed by Arianna Basile and Kiran Patil in 2023
 * Updated by Francisco Zorrilla and Arianna Basile in 2024
 
 
