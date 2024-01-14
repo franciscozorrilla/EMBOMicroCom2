@@ -1,3 +1,4 @@
 cobra
 matplotlib
 numpy
+notebook
