@@ -4,7 +4,7 @@
 
 ## 📜 About
 
-This repo hosts training materials for the University of Cambridge [Part III Systems Biology course](https://www.sysbiol.cam.ac.uk/Part%20III). More specifically, these are practical exercises for the computational session on flux balance analysis (FBA) using genome-scale metabolic models (GEMs). Exercise 1 is based on selected portions of the [cobrapy documentation](https://cobrapy.readthedocs.io/en/latest/).
+This repo hosts training materials for the University of Cambridge [Part III Systems Biology course](https://www.sysbiol.cam.ac.uk/Part%20III). More specifically, these are practical exercises for the computational session on flux balance analysis (FBA) using genome-scale metabolic models (GEMs). Some of the text and code chunks in the following exercises are based on selected portions of the [cobrapy documentation](https://cobrapy.readthedocs.io/en/latest/).
 
 ### Learning outcomes
 
