@@ -78,8 +78,9 @@ Alternatively launch an interactive binder session by clicking below:
 ## 🧠 Further exercises
 
 * [metaGEM](https://github.com/franciscozorrilla/unseenbio_metaGEM): Metagenomics-driven metabolic modelling tutorial using unseen bio samples
-* [SymbNET](https://github.com/franciscozorrilla/SymbNET): From metagenomics to metabolic Interactions 
+* [SymbNET](https://github.com/franciscozorrilla/SymbNET): From metagenomics to metabolic interactions 
 * [EMBOMicroCom](https://github.com/franciscozorrilla/EMBOMicroCom): Metabolite and species dynamics in microbial communities
+* [OLISSIPO](https://github.com/arianccbasile/FBA_OLISSIPO_Winter_School): FBA and community simulations
 
 ## 👷 Contributors
 
