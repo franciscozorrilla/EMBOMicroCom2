@@ -1,4 +1,5 @@
 # 🔬 [EMBOMicroCom2](https://www.embl.org/about/info/course-and-conference-office/events/mcd24-01/): Metabolite and species dynamics in microbial communities 🧬
+[![DOI](https://zenodo.org/badge/854492130.svg)](https://zenodo.org/doi/10.5281/zenodo.13735669)
 
 # 💻 Metabolic modeling tutorial (Day 5)
 
