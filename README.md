@@ -1,21 +1,21 @@
-# 🦠 Systems Biology Practical: FBA with GEMs 🧬
+# 🔬 [EMBOMicroCom2](https://www.embl.org/about/info/course-and-conference-office/events/mcd24-01/): Metabolite and species dynamics in microbial communities 🧬
 
-[![DOI](https://zenodo.org/badge/740951705.svg)](https://zenodo.org/doi/10.5281/zenodo.10475949)
+# 💻 Metabolic modeling tutorial (Day 5)
 
 ## 📜 About
 
-This repo hosts training materials for the University of Cambridge [Part III Systems Biology course](https://www.sysbiol.cam.ac.uk/Part%20III). More specifically, these are practical exercises for the computational session on flux balance analysis (FBA) using genome-scale metabolic models (GEMs). Some of the text and code chunks in the following exercises are based on selected portions of the [cobrapy documentation](https://cobrapy.readthedocs.io/en/latest/).
+This repo hosts training materials for the second installment of EMBO's Practical Course [Metabolite and species dynamics in microbial communities](https://www.embl.org/about/info/course-and-conference-office/events/mcd24-01/). More specifically, these are practical exercises for the computational session on flux balance analysis (FBA) using genome-scale metabolic models (GEMs). Some of the text and code chunks in the following exercises are based on selected portions of the [cobrapy documentation](https://cobrapy.readthedocs.io/en/latest/).
 
 ### Learning outcomes
 
-#### [Exercise 1](https://github.com/franciscozorrilla/systems-biology-fba-practical/blob/main/notebooks/1_fba.ipynb)
+#### [Exercise 1](https://github.com/franciscozorrilla/EMBOMicroCom2/blob/main/notebooks/1_fba.ipynb)
 - **1.1**: Import a metabolic reconstruction
 - **1.2**: Inspect the reactions of your model
 - **1.3**: Inspect the metabolites in your model
 - **1.4**: Inspect the genes in your model
 - **1.4.1**: Perform in-silico gene knockout experiments
 
-#### [Exercise 2](https://github.com/franciscozorrilla/systems-biology-fba-practical/blob/main/notebooks/2_fba.ipynb)
+#### [Exercise 2](https://github.com/franciscozorrilla/EMBOMicroCom2/blob/main/notebooks/2_fba.ipynb)
 - **2.1**: Modify growth medium of your reconstruction
 - **2.2**: Perform gene essentiality analysis under different conditions
 - **2.3**: Case study, simulate the Crabtree effect in yeast
@@ -52,13 +52,13 @@ You will find everything you need for these practical exercises under the `/note
 You may run these exercises on your local machine by cloning this repo:
 
 ```
-$ git clone https://github.com/franciscozorrilla/systems-biology-fba-practical.git
+$ git clone https://github.com/franciscozorrilla/EMBOMicroCom2.git
 ```
 
 Navigate into cloned repo folder:
 
 ```
-$ cd systems-biology-fba-practical
+$ cd EMBOMicroCom2
 ```
 
 Launch interactive jupyter notebook session:
@@ -73,7 +73,7 @@ This should launch a browser window, where you can click on the `/notebooks` fol
 
 Alternatively launch an interactive binder session by clicking below:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franciscozorrilla/systems-biology-fba-practical/HEAD)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/franciscozorrilla/EMBOMicroCom2/HEAD)
 
 ## 🧠 Further exercises
 
@@ -84,10 +84,10 @@ Alternatively launch an interactive binder session by clicking below:
 
 ## 👷 Contributors
 
-* Originally developed by Arianna Basile and Kiran Patil in 2023
-* Updated by Francisco Zorrilla and Arianna Basile in 2024
-
+* Updated by Francisco Zorrilla in September 2024
+* Expanded by Francisco Zorrilla and Arianna Basile in January 2024
+* Originally developed by Arianna Basile and Kiran Patil in January 2023
 
 ## ☎️ Contact
 
-Feel free to get in touch with us by raising an issue or sending an e-mail to Arianna Basile (ab2851@mrc-tox.cam.ac.uk) or Francisco Zorrilla (fz274@cam.ac.uk).
+Feel free to get in touch with us by raising an issue or sending an e-mail to Francisco Zorrilla (fz274@cam.ac.uk).
