@@ -14,7 +14,8 @@ This repo hosts training materials for the second installment of EMBO's Practica
 - **1.2**: Inspect the reactions of your model
 - **1.3**: Inspect the metabolites in your model
 - **1.4**: Inspect the genes in your model
-- **1.4.1**: Perform in-silico gene knockout experiments
+- **1.5**: Run flux balance analysis (FBA)
+- **1.6**: Perform in-silico gene knockout experiments
 
 #### [Exercise 2](https://github.com/franciscozorrilla/EMBOMicroCom2/blob/main/notebooks/2_fba.ipynb)
 - **2.1**: Modify growth medium of your reconstruction
